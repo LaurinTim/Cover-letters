@@ -1,0 +1,65 @@
+% Colors
+\definecolor{pagebackground}{HTML}{FFFFFF}
+\definecolor{sidebarbackground}{HTML}{E7E7E7}
+\definecolor{sidebartitle}{HTML}{000000}
+\definecolor{sidebartext}{HTML}{000000}
+\definecolor{bodytitle}{HTML}{000000}
+\definecolor{bodytext}{HTML}{000000}
+\definecolor{bulletcolor}{HTML}{000000}
+\definecolor{linkcolor}{HTML}{000000}
+\definecolor{linecolor}{HTML}{04004A} %{564E4E}
+\definecolor{name}{HTML}{04004A}
+\definecolor{jobtitle}{HTML}{04004A}
+\RequirePackage[pagecolor=pagebackground, nopagecolor=pagebackground]{pagecolor}
+
+% Defining font styles
+\newcommand{\sname}{\color{name}\fontsize{35pt}{35pt}\sffamily\addfontfeature{LetterSpace=3}\MakeUppercase}
+\newcommand{\sjobtitle}{\color{jobtitle}\fontsize{19pt}{20pt}\sffamily\addfontfeature{LetterSpace=3}\MakeUppercase}
+
+% Defining page styles
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Default text color
+\AtBeginDocument{\colorlet{defaultcolor}{.}}
+\color{bodytext}
+
+% Layout for name, job title and sidebar
+\newcommand{\makeprofile}{%
+    \vspace*{-1.5cm}
+    \begin{center}
+        {\setstretch{3}
+        \begin{adjustbox}{minipage=[c][2.0cm]{.9\textwidth}}
+            \centering
+            {\sname\name}
+        \end{adjustbox}}
+
+        {\setstretch{1.8}
+        \begin{adjustbox}{minipage=[c][1.5cm]{.9\textwidth}}
+            \centering
+            {\sjobtitle\jobtitle}
+        \end{adjustbox}}
+    \end{center}
+}
+
+\newcommand{\makecontact}{%
+    \begin{tikzpicture}[ampersand replacement=\&]
+        \node [rectangle, anchor=north, fill=sidebarbackground, inner ysep=10pt, inner xsep=0pt, minimum height=1.5cm] (contact) at ($(current page.north)-(0cm,6cm)$) {%
+            \begin{tabularx}{\textwidth}{CCC}%
+                \ifthenelse{\equal{\location}{}}{}{\locicon\ \: \location } &
+                \ifthenelse{\equal{\phone}{}}{}{\phoneicon\ \: \phone } &
+                \ifthenelse{\equal{\mail}{}}{}{\mailicon\ \: \href{mailto:\mail}{\mail} } \\
+            \end{tabularx}
+        };
+        \draw[line width=1.5pt, draw=linecolor] ($(contact.north west)$) -- ($(contact.north east)$);
+        \draw[line width=1.5pt, draw=linecolor] ($(contact.south west)$) -- ($(contact.south east)$);
+        %\draw[line width=1.5pt, draw=linecolor] ($(contact.south west)$) -- ($(contact.north west)$);
+        %\draw[line width=1.5pt, draw=linecolor] ($(contact.south east)$) -- ($(contact.north east)$);
+    \end{tikzpicture}
+    \vspace{2\bigskipamount}
+}
+
+% Margins
+\RequirePackage[left=2.0cm, right=2.0cm, top=2.0cm, bottom=1.5cm, footskip=0.5cm, headheight=0.5cm]{geometry}
