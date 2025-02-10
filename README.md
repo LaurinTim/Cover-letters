@@ -1,7 +1,7 @@
 <a href="https://paypal.me/antkr10"><img src="https://img.shields.io/badge/donate-paypal-00457c.svg?logo=paypal&style=flat-square" alt="Donate Paypal"></a>
 
 # tex-cvbuilder
-tex-cvbuilder is a collection of customizable Curriculum Vitae (CV) &amp; cover letter LaTeX templates. The two main files to edit are `CV-Template.tex` and `Cover-Letter-Template.tex`. 
+tex-cvbuilder is a collection of customizable Curriculum Vitae (CV) &amp; cover letter LaTeX templates. The main files to edit are `CV-Template.tex` and `Company-Cover-Letter.tex`. There are different cover letter files for each position. The theme "framed" is used. Some designchanges were made in comparison to the original template at https://github.com/antkr10/tex-cvbuilder.
 
 ## Building
 
